@@ -2,7 +2,7 @@ package com.ps;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sandwich {
+public class Sandwich extends Order.Sandwich {
 
         private String size;          // "4", "8", "12"
         private String breadType;      // "white", "wheat", "rye"
@@ -12,6 +12,7 @@ public class Sandwich {
 
         // Constructor to initialize sandwich properties
         public Sandwich(String size, String breadType, boolean toasted) {
+            super();
             this.size = size;
             this.breadType = breadType;
             this.toasted = toasted;
@@ -26,7 +27,7 @@ public class Sandwich {
         }
 
         // Calculate the price based on sandwich size and toppings
-        public String getPrice() {
+        public double getPrice() {
             double price = switch (size) {
                 case "4" -> 5.50;
                 case "8" -> 7.00;
@@ -39,6 +40,8 @@ public class Sandwich {
                 case "12" -> 3.00;
                 default -> 0.0;
             };
+            return price + premiumToppingCost;
+        }
 
         @Override
         public String toString() {
@@ -46,4 +49,4 @@ public class Sandwich {
         }
     }
 
-}
+

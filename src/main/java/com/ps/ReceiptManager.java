@@ -7,14 +7,14 @@ import java.util.Date;
 
 public class ReceiptManager {
 
-    public static <Chips> void saveReceipt(Order order) {
+    public static void saveReceipt(Order order) {
         String filename = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date()) + ".txt";
         try (FileWriter writer = new FileWriter("receipts/" + filename)) {
             writer.write("DELI-cious Order Receipt\n");
             writer.write("========================\n");
-            for (Sandwich s : order.getSandwiches()) writer.write(s.toString() + "\n");
+            for (Order.Sandwich s : order.getSandwiches()) writer.write(s.toString() + "\n");
             for (Order.Drink d : order.getDrinks()) writer.write(d.toString() + "\n");  // Corrected here
-            for (Chips c : order.getChips()) writer.write(c.toString() + "\n");
+            for (Order.Chips c : order.getChips()) writer.write(c.toString() + "\n");
             writer.write("Total: $" + order.calculateTotal() + "\n");
         } catch (IOException e) {
             System.out.println("Error saving receipt: " + e.getMessage());
