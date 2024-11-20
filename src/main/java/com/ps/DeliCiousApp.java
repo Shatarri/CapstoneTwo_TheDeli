@@ -67,7 +67,7 @@ public class DeliCiousApp {
         System.out.println("Enter sandwich size (4, 8, 12): ");
         String size = scanner.nextLine();
 
-        return new Sandwich(size, "white", false);
+        return new Sandwich(size, "white,rye,wheat", false);
     }
 
     private static Order.Drink createDrink(Scanner scanner) {
