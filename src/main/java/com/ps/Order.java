@@ -1,43 +1,72 @@
 package com.ps;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Order {
-
-
-    public class Order {
-        private List<Sandwich> sandwiches = new ArrayList<>();
-        private List<Drink> drinks = new ArrayList<>();
-        private List<Chips> chips = new ArrayList<>();
-
-        // Method to add sandwich, drink, or chips to the order
-        public void addSandwich(Sandwich sandwich) {
-            sandwiches.add(sandwich);
-        }
-        public void addDrink(Drink drink) {
-            drinks.add(drink);
-        }
-        public void addChips(Chips chip) {
-            chips.add(chip);
-        }
-
-        // Calculate total cost
-        public double calculateTotal() {
-            double total = 0;
-            for (Sandwich s : sandwiches) total += s.getPrice();
-            for (Drink d : drinks) total += d.getPrice();
-            for (Chips c : chips) total += c.getPrice();
-            return total;
-        }
-
-        // Display order summary
-        public void displayOrderSummary() {
-            System.out.println("Order Summary:");
-            for (Sandwich s : sandwiches) System.out.println(s);
-            for (Drink d : drinks) System.out.println(d);
-            for (Chips c : chips) System.out.println(c);
-            System.out.println("Total: $" + calculateTotal());
-        }
+    public com.ps.Sandwich[] getSandwiches() {
+        return new com.ps.Sandwich[0];
     }
 
+    public Drink[] getDrinks() {
+        return new Drink[0];
+    }
+
+    public Chips[] getChips() {
+        return new Chips[0];
+    }
+
+    public String calculateTotal() {
+        return "";
+    }
+
+    public void addSandwich(com.ps.Sandwich sandwich) {
+    }
+
+    public void addDrink(Drink drink) {
+    }
+
+    public void addChips(Chips chips) {
+    }
+
+    public void displayOrderSummary() {
+    }
+
+    public class Sandwich {
+        private String size;
+        private String breadType;
+        private double price;
+
+        public Sandwich(String size, String breadType, double price) {
+            this.size = size;
+            this.breadType = breadType;
+            this.price = price;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        @Override
+        public String toString() {
+            return size + " sandwich on " + breadType + " bread - $" + price;
+        }
+    }
+    public static class Drink {
+        private String size;
+        private String flavor;
+        private double price;
+
+        public Drink(String size, String flavor) {
+            this.size = size;
+            this.flavor = flavor;
+            this.price = price;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+        @Override
+        public String toString() {
+            return size + " " + flavor + " - $" + String.format("%.2f", price);
+        }
+    }
 }
+

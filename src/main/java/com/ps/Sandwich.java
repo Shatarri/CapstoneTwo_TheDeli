@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Sandwich {
 
-    public class Sandwich {
         private String size;          // "4", "8", "12"
         private String breadType;      // "white", "wheat", "rye"
         private boolean toasted;
@@ -27,17 +26,19 @@ public class Sandwich {
         }
 
         // Calculate the price based on sandwich size and toppings
-        public double getPrice() {
+        public String getPrice() {
             double price = switch (size) {
                 case "4" -> 5.50;
                 case "8" -> 7.00;
                 case "12" -> 8.50;
                 default -> 0.0;
             };
-            // Add costs for premium toppings
-            price += premiumToppings.size() * (size.equals("4") ? 1.00 : size.equals("8") ? 2.00 : 3.00);
-            return price;
-        }
+            double premiumToppingCost = premiumToppings.size() * switch (size) {
+                case "4" -> 1.00;
+                case "8" -> 2.00;
+                case "12" -> 3.00;
+                default -> 0.0;
+            };
 
         @Override
         public String toString() {
